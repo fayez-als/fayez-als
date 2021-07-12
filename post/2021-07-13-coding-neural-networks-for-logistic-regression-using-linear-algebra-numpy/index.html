@@ -1,0 +1,232 @@
+<!doctype html><html lang=en dir=auto><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1,shrink-to-fit=no"><meta name=robots content="index, follow"><title>Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy | Fayez Alshehri</title><meta name=keywords content="neural-networks"><meta name=description content="IntroductionNeural network’s most basic unit is a neuron. The way neurons interact and work together is the main determinant of the limits of a neural network’s complexity and sophistication.Similar to neurons found in the human brain, once a neuron receives a signal it is capable of combining it through linear regression, transforming it, and producing a new signal that is then received by another neuron.
+Neural networks are often seen in layers, with neurons in different levels interacting through the weighted attachments."><meta name=author content="root"><link rel=canonical href=https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/><meta name=google-site-verification content="XYZabc"><meta name=yandex-verification content="XYZabc"><meta name=msvalidate.01 content="XYZabc"><link crossorigin=anonymous href=/assets/css/stylesheet.min.fe63ae84f306727c713665eb03a6c71ec6c611434c8182ba17ba7e7d26a979e9.css integrity="sha256-/mOuhPMGcnxxNmXrA6bHHsbGEUNMgYK6F7p+fSapeek=" rel="preload stylesheet" as=style><script defer crossorigin=anonymous src=/assets/js/highlight.min.7680afc38aa6b15ddf158a4f3780b7b1f7dde7e91d26f073e6229bb7a0793c92.js integrity="sha256-doCvw4qmsV3fFYpPN4C3sffd5+kdJvBz5iKbt6B5PJI=" onload=hljs.initHighlightingOnLoad()></script><link rel=icon href=https://fayez-als.github.io/favicon.ico><link rel=icon type=image/png sizes=16x16 href=https://fayez-als.github.io/favicon-16x16.png><link rel=icon type=image/png sizes=32x32 href=https://fayez-als.github.io/favicon-32x32.png><link rel=apple-touch-icon href=https://fayez-als.github.io/apple-touch-icon.png><link rel=mask-icon href=https://fayez-als.github.io/safari-pinned-tab.svg><meta name=theme-color content="#2e2e33"><meta name=msapplication-TileColor content="#2e2e33"><meta name=generator content="Hugo 0.82.0"><script type=application/javascript>var doNotTrack=!1;doNotTrack||(function(a,e,f,g,b,c,d){a.GoogleAnalyticsObject=b,a[b]=a[b]||function(){(a[b].q=a[b].q||[]).push(arguments)},a[b].l=1*new Date,c=e.createElement(f),d=e.getElementsByTagName(f)[0],c.async=1,c.src=g,d.parentNode.insertBefore(c,d)}(window,document,'script','https://www.google-analytics.com/analytics.js','ga'),ga('create','UA-123-45','auto'),ga('send','pageview'))</script><meta property="og:title" content="Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy"><meta property="og:description" content="IntroductionNeural network’s most basic unit is a neuron. The way neurons interact and work together is the main determinant of the limits of a neural network’s complexity and sophistication.Similar to neurons found in the human brain, once a neuron receives a signal it is capable of combining it through linear regression, transforming it, and producing a new signal that is then received by another neuron.
+Neural networks are often seen in layers, with neurons in different levels interacting through the weighted attachments."><meta property="og:type" content="article"><meta property="og:url" content="https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/"><meta property="og:image" content="https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta property="article:section" content="post"><meta property="article:published_time" content="2021-07-11T00:00:00+00:00"><meta property="article:modified_time" content="2021-07-11T00:00:00+00:00"><meta property="og:site_name" content="FayezAlshehri"><meta name=twitter:card content="summary_large_image"><meta name=twitter:image content="https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"><meta name=twitter:title content="Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy"><meta name=twitter:description content="IntroductionNeural network’s most basic unit is a neuron. The way neurons interact and work together is the main determinant of the limits of a neural network’s complexity and sophistication.Similar to neurons found in the human brain, once a neuron receives a signal it is capable of combining it through linear regression, transforming it, and producing a new signal that is then received by another neuron.
+Neural networks are often seen in layers, with neurons in different levels interacting through the weighted attachments."><script type=application/ld+json>{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Posts","item":"https://fayez-als.github.io/post/"},{"@type":"ListItem","position":2,"name":"Coding Neural Networks for Logistic Regression Using Linear Algebra \u0026 Numpy","item":"https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/"}]}</script><script type=application/ld+json>{"@context":"https://schema.org","@type":"BlogPosting","headline":"Coding Neural Networks for Logistic Regression Using Linear Algebra \u0026 Numpy","name":"Coding Neural Networks for Logistic Regression Using Linear Algebra \u0026 Numpy","description":"Introduction\rNeural network’s most basic unit is a neuron. The way neurons interact and work together is the main determinant of the limits of a neural network’s complexity and sophistication.\rSimilar to neurons found in the human brain, once a neuron receives a signal it is capable of combining it through linear regression, transforming it, and producing a new signal that is then received by another neuron.\nNeural networks are often seen in layers, with neurons in different levels interacting through the weighted attachments.","keywords":["neural-networks"],"articleBody":"\r\rIntroduction\rNeural network’s most basic unit is a neuron. The way neurons interact and work together is the main determinant of the limits of a neural network’s complexity and sophistication.\rSimilar to neurons found in the human brain, once a neuron receives a signal it is capable of combining it through linear regression, transforming it, and producing a new signal that is then received by another neuron.\nNeural networks are often seen in layers, with neurons in different levels interacting through the weighted attachments. Essentially, neurons in the same layers will receive the same inputs, and the outputs will be combined in the next layer’s neurons.\nA neural network can be created using programming libraries or GUI applications. However, in this project we will be using calculus and Numpy to code a fully functional network from scratch using state of the art algorithms like HE initialization and ADAM optimization.\n\rArchitechting The Layers\rOur goal is to create a function that can accept any vertex and transform it into vectorized neural layers.\nFor initializing the weights of W and b, we will be using the HE initialization method which was proven to be better than random initialization. Later on, we will use ADAM optimization so we are also initializing the hyperparameters (V \u0026 S) for that function now in order to reduce the reliance on extra for loop.\n\rdef initialize_he(layers_dims):\rV = {}\rS = {}\rparameters = {}\rL = len(layers_dims) - 1 for l in range(1, L + 1):\rparameters['W' + str(l)] = np.random.randn(layers_dims[l], layers_dims[l-1]) * np.sqrt(2 / layers_dims[l-1])\rV['dW'+str(l)] = np.zeros_like(parameters[\"W\" + str(l)])\rS['dW'+str(l)] = np.zeros_like(parameters[\"W\" + str(l)])\rparameters['b' + str(l)] = np.zeros((layers_dims[l], 1))\rV[\"db\" + str(l)] = np.zeros_like(parameters[\"b\" + str(l)])\rS[\"db\" + str(l)] = np.zeros_like(parameters[\"b\" + str(l)])\rreturn parameters,V,S\r\rForward Propagation\rForward propagation is the easiest part of neural network architecture. In order to propagate all of our training examples we will be using a matrix dot product. We need a function that accepts training examples, the initialized weight, and the type of the activation functions in which layers will be dropped in order to reduce overfitting.\nFirst:\rwe use matrix dot product to compute Z\n\\[X.W_1+b_1\\]\rWhere X is the input matrix and W are the first layer weights and b is the bias.\nThen:\rWe insert Z in the activation function to get A then repeat for all the layers\n\\[A.W_2+b_2\\]\nhere is the complete code for forward propagation:\ndef forward(X,params,types,drop_layer):\rout = {}\rA=X\rL = len(types)\rfor i in range(1,L+1):\rZ = np.dot(params['W'+str(i)],A)+ params['b'+str(i)]\rif types[i-1] == 'tanh':\rA = np.tanh(Z)\relif types[i-1] == 'sigmoid':\rA = sigmoid(Z)\relif types[i-1] =='relu':\rA =relu(Z)\rif i == drop_layer:\rA = dropout(A)\rout['Z'+str(i)] = Z\rout['A'+str(i)] = A\rout['A0']=X\rreturn out\r\rForward propagation dependencies\rBecause we are implementing a deep neural network in this example and we want our model to be non linear, the use of the Activation function is necessary. Without these functions, all the weights of different layers can be summed to a single layer and the sole purpose of the neural network is lost.\nOur previous function relied on 3 activation functions (Tanh,Relu, sigmoid) and 1 drop function. Keep in mind that Tanh can be implemented natively in numpy. Later on, we will need the derivatives of these functions. In order to progress systematically. Let’s code all these functions now.\ndef sigmoid(Z):\rA = 1/(1+np.exp(-Z))\rreturn A def Dsigmoid(A):\rreturn A*(1-A)\rdef relu(Z):\rreturn np.maximum(Z,0)\rdef Drelu(z):\rreturn np.greater(z, 0).astype(int)\rdef Dtanh(A):\rreturn 1 - np.power(A, 2)\rdef compute_cost(AL, Y):\rm = Y.shape[1] # number of example\rlogprobs = np.multiply(np.log(AL), Y) + np.multiply((1 - Y), np.log(1 - AL))\rcost = - np.sum(logprobs) / m\rcost = np.squeeze(cost) # makes sure cost is the dimension we expect. # E.g., turns [[17]] into 17 return cost\r\rbackward propagation\rFor backward propagation to be implemented, a function that takes into account X, Y, the predicted values of each example, and parameters (the weight and bias for each layer type) must be used.\rThe function serves the purpose of calculating the derivatives of each variable. Relying heavily on calculus and using the helper function defined earlier. The result of this function is a dictionary that contains each derivative that will be used in updating the parameters.\n\rdef backward(X,Y,out, params,types):\rgrads ={}\rL = str(len(types))\rLi = len(types)\rm = Y.shape[1]\rgrads['dZ'+ L] = out['A'+ L ] - Y\rgrads['dW'+L ] = (1/m)*(np.dot(grads['dZ'+L],out['A'+str(Li-1)].T))\rgrads['db'+L] = (1/m)*(np.sum(grads['dZ'+ L],axis=1,keepdims=True))\rfor i in range(Li-1,0,-1):\rif types[i-1] == 'tanh':\rgrads['dZ'+ str(i)] = np.dot(params['W' +str(i+1)].T,grads['dZ' +str(i+1)])*(1-np.power(out['A'+ str(i)],2))\rif types[i-1] == 'relu':\rgrads['dZ'+ str(i)] = np.dot(params['W' +str(i+1)].T,grads['dZ' +str(i+1)])*(Drelu(out['Z'+ str(i)]))\rgrads['dW'+ str(i) ] = (1/m)*(np.dot(grads['dZ'+str(i)],out['A'+ str((i-1))].T))\rgrads['db'+ str(i) ] = (1/m)*(np.sum(grads['dZ'+ str(i)],axis=1,keepdims=True))\rreturn grads\r\r\rUpdating the parameters\rThe ADAM (short for adaptive Moment Estimation ) optimization method uses Exponentially Moving Average combined with RMSProp Optimization. The main idea behind it is to average the weights across multiple examples in order to reduce the loss function fluctuations. It relies on 4 parameters, V and S which both have been initialized in a previous function, beta1(default = 0.9), and beta2(default = 0.999).\nHere is a link from Cornell from Cornell University that explains the process very well.\nOnce you understand the algorithm, its application is fairly straightforward.\n\rdef update_with_Adam(params,grads,types,lr,V,S,beta1,beta2,t):\rL = len(types)\rV_C = {}\rS_C = {}\rfor i in range(1,L+1):\rI = str(i)\rV['dW'+I] = beta1*V['dW'+I] + (1-beta1)*grads['dW'+I]\rV['db'+I] = beta1*V['db'+I] + (1-beta1)*grads['db'+I]\rV_C['dW'+I] = V['dW'+I]/(1-np.power(beta1,t))\rV_C['db'+I] = V['db'+I]/(1-np.power(beta1,t))\rS['dW'+I] = beta2*S['dW'+I] + (1-beta2)*np.power(grads['dW'+I],2)\rS['db'+I] = beta2*S['db'+I] + (1-beta2)*np.power(grads['db'+I],2)\rS_C['dW'+I] = S['dW'+I]/(1-np.power(beta2,t))\rS_C['db'+I] = S['db'+I]/(1-np.power(beta2,t))\rparams['W'+I] = params['W'+I] - lr*(V_C['dW'+I]/np.sqrt(S_C['dW'+I]+1e-8)+1e-8)\rparams['b'+I] = params['b'+I] - lr*(V_C['db'+I]/np.sqrt(S_C['db'+I]+1e-8)+1e-8)\rreturn params,V,S\r\r\rtraining with batches\rTo efficiently manage the increasing amounts of data it is necessary to split the data into smaller portions in order to train machine-learning models. There are many methods for dividing the training examples into batches.\rOne example of these methods is stochastic. Stochastic trains one example at a time, training all the data at once, or using mini batches. The following function can be used to adjust the batch size for the required outcome. The drop layer position can also be specified here.\ndef batch_train_Adam(X,Y,P,types,iter,lr,drop_layer,batch_size,V,S,beta1,beta2):\rparams = P\rm = X.shape[1]\rpermutation = list(np.random.permutation(m))\rshuffled_X = X[:, permutation]\rshuffled_Y = Y[:, permutation].reshape((1,m))\rn_batches = m//batch_size\rt = 0\rfor i in range(iter):\rpermutation = list(np.random.permutation(m))\rshuffled_X = X[:, permutation]\rshuffled_Y = Y[:, permutation].reshape((1,m))\rfor k in range(0,n_batches):\rX_batch = X[:,k*batch_size:(k+1)*batch_size]\rY_batch = Y[:,k*batch_size:(k+1)*batch_size]\rout = forward(X_batch,params,types,drop_layer)\rgrads = backward(X_batch,Y_batch,out, params,types)\rt= t+1\rparams,V,S = update_with_Adam(params,grads,types,lr,V,S,beta1,beta2,t)\rif i%100==0:\rC = compute_cost(out['A'+str(len(types))],Y_batch)\rprint('iteration :' +str(i))\rprint(C)\rreturn params\r\rproof of concept\rThis Neural Network Algorithm will be tested using a sklearn dataset that contains 300 examples and two labels.\nWe will be using a relatively small network (2 inner layers,10,5 nodes respectively) that matches the difficulty of this dataset. We won’t be using a dropout in this example as overfitting is currently not a concern.\n\rdef load_dataset():\rnp.random.seed(1)\rtrain_X, train_Y = sklearn.datasets.make_circles(n_samples=300, noise=.05)\rnp.random.seed(2)\rtest_X, test_Y = sklearn.datasets.make_circles(n_samples=100, noise=.05)\r# Visualize the data\rplt.scatter(train_X[:, 0], train_X[:, 1], c=train_Y, s=40, cmap=plt.cm.Spectral);\rtrain_X = train_X.T\rtrain_Y = train_Y.reshape((1, train_Y.shape[0]))\rtest_X = test_X.T\rtest_Y = test_Y.reshape((1, test_Y.shape[0]))\rreturn train_X, train_Y, test_X, test_Y\rtrain_X, train_Y, test_X, test_Y = load_dataset()\r\rAlthough we did not write a time counter in our code, we can see the loss function dropped substantially during the first 200 iterations. However, it is expected to see some fluctuations since we are using batches.\nparams,V,S = initialize_he([2,10,5,1])\rtypes = ['tanh','tanh','sigmoid']\rnew_params = batch_train_Adam(train_X,train_Y,params,types,2200,.08,'none',64,V,S,0.9,0.999)\r## iteration :0\r## 0.7005249085650023\r## iteration :100\r## 0.037945335057998575\r## iteration :200\r## 0.02884471735696274\r## iteration :300\r## 0.5007624771581856\r## iteration :400\r## 0.07187089059588332\r## iteration :500\r## 0.012795036396699249\r## iteration :600\r## 0.012769417802766785\r## iteration :700\r## 0.0183723889042458\r## iteration :800\r## 0.016292239382277515\r## iteration :900\r## 0.032524493623532644\r## iteration :1000\r## 0.013020023553337971\r## iteration :1100\r## 0.024472349000375076\r## iteration :1200\r## 0.007357900814325956\r## iteration :1300\r## 0.08110864477243597\r## iteration :1400\r## 0.0025365514742831338\r## iteration :1500\r## 0.00622510120565864\r## iteration :1600\r## 0.011314572610327197\r## iteration :1700\r## 0.0012947721943428556\r## iteration :1800\r## 0.0008670224949203275\r## iteration :1900\r## 0.0006849812105099117\r## iteration :2000\r## 0.022016205997497453\r## iteration :2100\r## 0.004208831618081026\r\rPredictions\rThis model can be used to predict certain values with variable accuracies. It is seen in the graph below the differences between the test data and the model’s predictions’ results. The accuracy in this specific case is measured at 93% in a test data consisting of 100 samples, which shows that our implementation of a neural network using numpy is learning the patterns correctly. In order to improve the accuracy more nodes and layers should be used. Furthermore, it is worth noting that we only trained 300 samples where in a real situation the training data can be significantly bigger.\n## 0.91\r## Text(0.5, 1.0, 'Test Data')\r## Text(0.5, 1.0, 'Prediction')\r## Text(0.5, 0.98, 'Horizontally stacked subplots')\r## \r\rConclusion\rAlthough AI Libraries (Tensorflow-Pytorch) can perform neural networks algorithms with fewer lines of code, in order to fully understand the science behind these algorithms it’s recommended to do the math from scratch.\n\r\r","wordCount":"1512","inLanguage":"en","datePublished":"2021-07-11T00:00:00Z","dateModified":"2021-07-11T00:00:00Z","author":{"@type":"Person","name":"root"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/"},"publisher":{"@type":"Organization","name":"Fayez Alshehri","logo":{"@type":"ImageObject","url":"https://fayez-als.github.io/favicon.ico"}}}</script></head><body class=dark id=top><noscript><style type=text/css>#theme-toggle,.top-link{display:none}</style></noscript><header class=header><nav class=nav><div class=logo><a href=https://fayez-als.github.io/ accesskey=h title="Fayez Alshehri (Alt + H)">Fayez Alshehri</a>
+<span class=logo-switches></span></div><ul id=menu><li><a href=https://fayez-als.github.io/categories/ title=categories><span>categories</span></a></li><li><a href=https://fayez-als.github.io/tags/ title=tags><span>tags</span></a></li><li><a href=https://fayez-als.github.io/ title><span></span></a></li></ul></nav></header><main class=main><article class=post-single><header class=post-header><div class=breadcrumbs><a href=https://fayez-als.github.io/>Home</a>&nbsp;»&nbsp;<a href=https://fayez-als.github.io/post/>Posts</a></div><h1 class=post-title>Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy</h1><div class=post-meta>July 11, 2021&nbsp;·&nbsp;root&nbsp;|&nbsp;<a href=https://github.com/%3cpath_to_repo%3e/content/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/index.html rel="noopener noreferrer" target=_blank>Suggest Changes</a></div></header><div class=post-content><script src=https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/index_files/header-attrs/header-attrs.js></script><div id=introduction class="section level2"><h2>Introduction</h2><p>Neural network’s most basic unit is a neuron. The way neurons interact and work together is the main determinant of the limits of a neural network’s complexity and sophistication.
+Similar to neurons found in the human brain, once a neuron receives a signal it is capable of combining it through linear regression, transforming it, and producing a new signal that is then received by another neuron.</p><p>Neural networks are often seen in layers, with neurons in different levels interacting through the weighted attachments. Essentially, neurons in the same layers will receive the same inputs, and the outputs will be combined in the next layer’s neurons.</p><p>A neural network can be created using programming libraries or GUI applications. However, in this project we will be using calculus and Numpy to code a fully functional network from scratch using state of the art algorithms like HE initialization and ADAM optimization.</p></div><div id=architechting-the-layers class="section level2"><h2>Architechting The Layers</h2><p>Our goal is to create a function that can accept any vertex and transform it into vectorized neural layers.</p><p>For initializing the weights of W and b, we will be using the HE initialization method which was proven to be better than random initialization. Later on, we will use ADAM optimization so we are also initializing the hyperparameters (V & S) for that function now in order to reduce the reliance on extra for loop.</p><pre class=python><code>
+def initialize_he(layers_dims):
+    V = {}
+    S = {}
+    parameters = {}
+    L = len(layers_dims) - 1 
+    for l in range(1, L + 1):
+        parameters[&#39;W&#39; + str(l)] = np.random.randn(layers_dims[l], layers_dims[l-1]) * np.sqrt(2 / layers_dims[l-1])
+        V[&#39;dW&#39;+str(l)] = np.zeros_like(parameters[&quot;W&quot; + str(l)])
+        S[&#39;dW&#39;+str(l)] = np.zeros_like(parameters[&quot;W&quot; + str(l)])
+        parameters[&#39;b&#39; + str(l)] = np.zeros((layers_dims[l], 1))
+        V[&quot;db&quot; + str(l)] = np.zeros_like(parameters[&quot;b&quot; + str(l)])
+        S[&quot;db&quot; + str(l)] = np.zeros_like(parameters[&quot;b&quot; + str(l)])
+    return parameters,V,S</code></pre></div><div id=forward-propagation class="section level1"><h1>Forward Propagation</h1><p>Forward propagation is the easiest part of neural network architecture. In order to propagate all of our training examples we will be using a matrix dot product. We need a function that accepts training examples, the initialized weight, and the type of the activation functions in which layers will be dropped in order to reduce overfitting.</p><p>First:
+we use matrix dot product to compute Z</p><p><span class="math display">\[X.W_1+b_1\]</span>
+Where X is the input matrix and W are the first layer weights and b is the bias.</p><p>Then:
+We insert Z in the activation function to get A then repeat for all the layers</p><p><span class="math display">\[A.W_2+b_2\]</span></p><p>here is the complete code for forward propagation:</p><pre class=python><code>def forward(X,params,types,drop_layer):
+  out = {}
+  A=X
+  L = len(types)
+
+  for i in range(1,L+1):
+    Z = np.dot(params[&#39;W&#39;+str(i)],A)+ params[&#39;b&#39;+str(i)]
+    if types[i-1] == &#39;tanh&#39;:
+
+      A = np.tanh(Z)
+    elif types[i-1] == &#39;sigmoid&#39;:
+      A = sigmoid(Z)
+
+    elif types[i-1] ==&#39;relu&#39;:
+      A =relu(Z)
+
+    
+    if i == drop_layer:
+      A = dropout(A)
+    
+
+    out[&#39;Z&#39;+str(i)] = Z
+    out[&#39;A&#39;+str(i)] = A
+
+  
+  out[&#39;A0&#39;]=X
+  return out</code></pre></div><div id=forward-propagation-dependencies class="section level1"><h1>Forward propagation dependencies</h1><p>Because we are implementing a deep neural network in this example and we want our model to be non linear, the use of the Activation function is necessary. Without these functions, all the weights of different layers can be summed to a single layer and the sole purpose of the neural network is lost.</p><p>Our previous function relied on 3 activation functions (Tanh,Relu, sigmoid) and 1 drop function. Keep in mind that Tanh can be implemented natively in numpy. Later on, we will need the derivatives of these functions. In order to progress systematically. Let’s code all these functions now.</p><pre class=python><code>def sigmoid(Z):
+    A = 1/(1+np.exp(-Z))
+    
+    return A 
+
+def Dsigmoid(A):
+  return A*(1-A)
+
+def relu(Z):
+  return np.maximum(Z,0)
+
+def Drelu(z):
+    return np.greater(z, 0).astype(int)
+
+def Dtanh(A):
+  return 1 - np.power(A, 2)
+
+
+def compute_cost(AL, Y):
+  
+    
+    m = Y.shape[1] # number of example
+    logprobs = np.multiply(np.log(AL), Y) + np.multiply((1 - Y), np.log(1 - AL))
+    cost = - np.sum(logprobs) / m
+    cost = np.squeeze(cost)     # makes sure cost is the dimension we expect. 
+                                # E.g., turns [[17]] into 17 
+    
+    
+    return cost
+</code></pre><div id=backward-propagation class="section level2"><h2>backward propagation</h2><p>For backward propagation to be implemented, a function that takes into account X, Y, the predicted values of each example, and parameters (the weight and bias for each layer type) must be used.
+The function serves the purpose of calculating the derivatives of each variable. Relying heavily on calculus and using the helper function defined earlier. The result of this function is a dictionary that contains each derivative that will be used in updating the parameters.</p><pre class=python><code>
+def backward(X,Y,out, params,types):
+  grads ={}
+  L = str(len(types))
+  Li = len(types)
+  m = Y.shape[1]
+
+  grads[&#39;dZ&#39;+ L] = out[&#39;A&#39;+ L ] - Y
+  grads[&#39;dW&#39;+L ] = (1/m)*(np.dot(grads[&#39;dZ&#39;+L],out[&#39;A&#39;+str(Li-1)].T))
+  grads[&#39;db&#39;+L] = (1/m)*(np.sum(grads[&#39;dZ&#39;+ L],axis=1,keepdims=True))
+
+
+
+  for i in range(Li-1,0,-1):
+    
+    if types[i-1] == &#39;tanh&#39;:
+      grads[&#39;dZ&#39;+ str(i)] = np.dot(params[&#39;W&#39; +str(i+1)].T,grads[&#39;dZ&#39; +str(i+1)])*(1-np.power(out[&#39;A&#39;+ str(i)],2))
+
+    if types[i-1] == &#39;relu&#39;:
+      grads[&#39;dZ&#39;+ str(i)] = np.dot(params[&#39;W&#39; +str(i+1)].T,grads[&#39;dZ&#39; +str(i+1)])*(Drelu(out[&#39;Z&#39;+ str(i)]))
+    
+
+    
+    grads[&#39;dW&#39;+ str(i) ] = (1/m)*(np.dot(grads[&#39;dZ&#39;+str(i)],out[&#39;A&#39;+ str((i-1))].T))
+    grads[&#39;db&#39;+ str(i) ] = (1/m)*(np.sum(grads[&#39;dZ&#39;+ str(i)],axis=1,keepdims=True))
+
+
+  
+
+  return grads
+</code></pre></div><div id=updating-the-parameters class="section level2"><h2>Updating the parameters</h2><p>The ADAM (short for adaptive Moment Estimation ) optimization method uses Exponentially Moving Average combined with RMSProp Optimization. The main idea behind it is to average the weights across multiple examples in order to reduce the loss function fluctuations. It relies on 4 parameters, V and S which both have been initialized in a previous function, beta1(default = 0.9), and beta2(default = 0.999).</p><p>Here is a <a href="https://optimization.cbe.cornell.edu/index.php?title=Adam">link</a> from Cornell from Cornell University that explains the process very well.</p><p>Once you understand the algorithm, its application is fairly straightforward.</p><pre class=python><code>
+def update_with_Adam(params,grads,types,lr,V,S,beta1,beta2,t):
+  L = len(types)
+  V_C = {}
+  S_C = {}
+
+
+  for i in range(1,L+1):
+
+    I = str(i)
+    V[&#39;dW&#39;+I] = beta1*V[&#39;dW&#39;+I] + (1-beta1)*grads[&#39;dW&#39;+I]
+    V[&#39;db&#39;+I] = beta1*V[&#39;db&#39;+I] + (1-beta1)*grads[&#39;db&#39;+I]
+
+    V_C[&#39;dW&#39;+I] = V[&#39;dW&#39;+I]/(1-np.power(beta1,t))
+    V_C[&#39;db&#39;+I] = V[&#39;db&#39;+I]/(1-np.power(beta1,t))
+
+    S[&#39;dW&#39;+I] = beta2*S[&#39;dW&#39;+I] + (1-beta2)*np.power(grads[&#39;dW&#39;+I],2)
+    S[&#39;db&#39;+I] = beta2*S[&#39;db&#39;+I] + (1-beta2)*np.power(grads[&#39;db&#39;+I],2)
+
+    S_C[&#39;dW&#39;+I] = S[&#39;dW&#39;+I]/(1-np.power(beta2,t))
+    S_C[&#39;db&#39;+I] = S[&#39;db&#39;+I]/(1-np.power(beta2,t))
+    
+    
+    params[&#39;W&#39;+I] = params[&#39;W&#39;+I] - lr*(V_C[&#39;dW&#39;+I]/np.sqrt(S_C[&#39;dW&#39;+I]+1e-8)+1e-8)
+    params[&#39;b&#39;+I] = params[&#39;b&#39;+I] - lr*(V_C[&#39;db&#39;+I]/np.sqrt(S_C[&#39;db&#39;+I]+1e-8)+1e-8)
+
+  return params,V,S
+</code></pre></div><div id=training-with-batches class="section level2"><h2>training with batches</h2><p>To efficiently manage the increasing amounts of data it is necessary to split the data into smaller portions in order to train machine-learning models. There are many methods for dividing the training examples into batches.
+One example of these methods is stochastic. Stochastic trains one example at a time, training all the data at once, or using mini batches. The following function can be used to adjust the batch size for the required outcome. The drop layer position can also be specified here.</p><pre class=python><code>def batch_train_Adam(X,Y,P,types,iter,lr,drop_layer,batch_size,V,S,beta1,beta2):
+  params = P
+  m = X.shape[1]
+  permutation = list(np.random.permutation(m))
+  shuffled_X = X[:, permutation]
+  shuffled_Y = Y[:, permutation].reshape((1,m))
+  
+  n_batches = m//batch_size
+  t = 0
+
+  for i in range(iter):
+    permutation = list(np.random.permutation(m))
+    shuffled_X = X[:, permutation]
+    shuffled_Y = Y[:, permutation].reshape((1,m))
+
+    for k in range(0,n_batches):
+      X_batch = X[:,k*batch_size:(k+1)*batch_size]
+      Y_batch = Y[:,k*batch_size:(k+1)*batch_size]
+
+      out = forward(X_batch,params,types,drop_layer)
+      grads = backward(X_batch,Y_batch,out, params,types)
+      t= t+1
+      params,V,S = update_with_Adam(params,grads,types,lr,V,S,beta1,beta2,t)
+      
+
+    if i%100==0:
+      C = compute_cost(out[&#39;A&#39;+str(len(types))],Y_batch)
+      
+      print(&#39;iteration :&#39; +str(i))
+      
+      print(C)
+  return params</code></pre></div><div id=proof-of-concept class="section level2"><h2>proof of concept</h2><p>This Neural Network Algorithm will be tested using a sklearn dataset that contains 300 examples and two labels.</p><p>We will be using a relatively small network (2 inner layers,10,5 nodes respectively) that matches the difficulty of this dataset. We won’t be using a dropout in this example as overfitting is currently not a concern.</p><pre class=python><code>
+def load_dataset():
+    np.random.seed(1)
+    train_X, train_Y = sklearn.datasets.make_circles(n_samples=300, noise=.05)
+    np.random.seed(2)
+    test_X, test_Y = sklearn.datasets.make_circles(n_samples=100, noise=.05)
+    # Visualize the data
+    plt.scatter(train_X[:, 0], train_X[:, 1], c=train_Y, s=40, cmap=plt.cm.Spectral);
+    train_X = train_X.T
+    train_Y = train_Y.reshape((1, train_Y.shape[0]))
+    test_X = test_X.T
+    test_Y = test_Y.reshape((1, test_Y.shape[0]))
+    return train_X, train_Y, test_X, test_Y
+  
+
+train_X, train_Y, test_X, test_Y = load_dataset()
+</code></pre><p>Although we did not write a time counter in our code, we can see the loss function dropped substantially during the first 200 iterations. However, it is expected to see some fluctuations since we are using batches.</p><pre class=python><code>params,V,S = initialize_he([2,10,5,1])
+types = [&#39;tanh&#39;,&#39;tanh&#39;,&#39;sigmoid&#39;]
+new_params = batch_train_Adam(train_X,train_Y,params,types,2200,.08,&#39;none&#39;,64,V,S,0.9,0.999)</code></pre><pre><code>## iteration :0
+## 0.7005249085650023
+## iteration :100
+## 0.037945335057998575
+## iteration :200
+## 0.02884471735696274
+## iteration :300
+## 0.5007624771581856
+## iteration :400
+## 0.07187089059588332
+## iteration :500
+## 0.012795036396699249
+## iteration :600
+## 0.012769417802766785
+## iteration :700
+## 0.0183723889042458
+## iteration :800
+## 0.016292239382277515
+## iteration :900
+## 0.032524493623532644
+## iteration :1000
+## 0.013020023553337971
+## iteration :1100
+## 0.024472349000375076
+## iteration :1200
+## 0.007357900814325956
+## iteration :1300
+## 0.08110864477243597
+## iteration :1400
+## 0.0025365514742831338
+## iteration :1500
+## 0.00622510120565864
+## iteration :1600
+## 0.011314572610327197
+## iteration :1700
+## 0.0012947721943428556
+## iteration :1800
+## 0.0008670224949203275
+## iteration :1900
+## 0.0006849812105099117
+## iteration :2000
+## 0.022016205997497453
+## iteration :2100
+## 0.004208831618081026</code></pre></div><div id=predictions class="section level2"><h2>Predictions</h2><p>This model can be used to predict certain values with variable accuracies. It is seen in the graph below the differences between the test data and the model’s predictions’ results. The accuracy in this specific case is measured at 93% in a test data consisting of 100 samples, which shows that our implementation of a neural network using numpy is learning the patterns correctly. In order to improve the accuracy more nodes and layers should be used. Furthermore, it is worth noting that we only trained 300 samples where in a real situation the training data can be significantly bigger.</p><pre><code>## 0.91</code></pre><pre><code>## Text(0.5, 1.0, &#39;Test Data&#39;)</code></pre><pre><code>## Text(0.5, 1.0, &#39;Prediction&#39;)</code></pre><pre><code>## Text(0.5, 0.98, &#39;Horizontally stacked subplots&#39;)</code></pre><pre><code>## &lt;matplotlib.collections.PathCollection object at 0x000000006C1F6100&gt;</code></pre><p><img src=https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/index_files/figure-html/unnamed-chunk-2-1.png width=960></p></div><div id=conclusion class="section level2"><h2>Conclusion</h2><p>Although AI Libraries (Tensorflow-Pytorch) can perform neural networks algorithms with fewer lines of code, in order to fully understand the science behind these algorithms it’s recommended to do the math from scratch.</p></div></div></div><footer class=post-footer><ul class=post-tags><li><a href=https://fayez-als.github.io/tags/neural-networks/>neural-networks</a></li></ul><div class=share-buttons><a target=_blank rel="noopener noreferrer" aria-label="share Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy on twitter" href="https://twitter.com/intent/tweet/?text=Coding%20Neural%20Networks%20for%20Logistic%20Regression%20Using%20Linear%20Algebra%20%26%20Numpy&url=https%3a%2f%2ffayez-als.github.io%2fpost%2f2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy%2f&hashtags=neural-networks"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM195.519 424.544c135.939.0 210.268-112.643 210.268-210.268.0-3.218.0-6.437-.153-9.502 14.406-10.421 26.973-23.448 36.935-38.314-13.18 5.824-27.433 9.809-42.452 11.648 15.326-9.196 26.973-23.602 32.49-40.92-14.252 8.429-30.038 14.56-46.896 17.931-13.487-14.406-32.644-23.295-53.946-23.295-40.767.0-73.87 33.104-73.87 73.87.0 5.824.613 11.494 1.992 16.858-61.456-3.065-115.862-32.49-152.337-77.241-6.284 10.881-9.962 23.601-9.962 37.088.0 25.594 13.027 48.276 32.95 61.456-12.107-.307-23.448-3.678-33.41-9.196v.92c0 35.862 25.441 65.594 59.311 72.49-6.13 1.686-12.72 2.606-19.464 2.606-4.751.0-9.348-.46-13.946-1.38 9.349 29.426 36.628 50.728 68.965 51.341-25.287 19.771-57.164 31.571-91.8 31.571-5.977.0-11.801-.306-17.625-1.073 32.337 21.15 71.264 33.41 112.95 33.41z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy on linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https%3a%2f%2ffayez-als.github.io%2fpost%2f2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy%2f&title=Coding%20Neural%20Networks%20for%20Logistic%20Regression%20Using%20Linear%20Algebra%20%26%20Numpy&summary=Coding%20Neural%20Networks%20for%20Logistic%20Regression%20Using%20Linear%20Algebra%20%26%20Numpy&source=https%3a%2f%2ffayez-als.github.io%2fpost%2f2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM160.461 423.278V197.561h-75.04v225.717h75.04zm270.539.0V293.839c0-69.333-37.018-101.586-86.381-101.586-39.804.0-57.634 21.891-67.617 37.266v-31.958h-75.021c.995 21.181.0 225.717.0 225.717h75.02V297.222c0-6.748.486-13.492 2.474-18.315 5.414-13.475 17.767-27.434 38.494-27.434 27.135.0 38.007 20.707 38.007 51.037v120.768H431zM123.448 88.722C97.774 88.722 81 105.601 81 127.724c0 21.658 16.264 39.002 41.455 39.002h.484c26.165.0 42.452-17.344 42.452-39.002-.485-22.092-16.241-38.954-41.943-39.002z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy on reddit" href="https://reddit.com/submit?url=https%3a%2f%2ffayez-als.github.io%2fpost%2f2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy%2f&title=Coding%20Neural%20Networks%20for%20Logistic%20Regression%20Using%20Linear%20Algebra%20%26%20Numpy"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zM446 265.638c0-22.964-18.616-41.58-41.58-41.58-11.211.0-21.361 4.457-28.841 11.666-28.424-20.508-67.586-33.757-111.204-35.278l18.941-89.121 61.884 13.157c.756 15.734 13.642 28.29 29.56 28.29 16.407.0 29.706-13.299 29.706-29.701.0-16.403-13.299-29.702-29.706-29.702-11.666.0-21.657 6.792-26.515 16.578l-69.105-14.69c-1.922-.418-3.939-.042-5.585 1.036-1.658 1.073-2.811 2.761-3.224 4.686l-21.152 99.438c-44.258 1.228-84.046 14.494-112.837 35.232-7.468-7.164-17.589-11.591-28.757-11.591-22.965.0-41.585 18.616-41.585 41.58.0 16.896 10.095 31.41 24.568 37.918-.639 4.135-.99 8.328-.99 12.576.0 63.977 74.469 115.836 166.33 115.836s166.334-51.859 166.334-115.836c0-4.218-.347-8.387-.977-12.493 14.564-6.47 24.735-21.034 24.735-38.001zM326.526 373.831c-20.27 20.241-59.115 21.816-70.534 21.816-11.428.0-50.277-1.575-70.522-21.82-3.007-3.008-3.007-7.882.0-10.889 3.003-2.999 7.882-3.003 10.885.0 12.777 12.781 40.11 17.317 59.637 17.317 19.522.0 46.86-4.536 59.657-17.321 3.016-2.999 7.886-2.995 10.885.008 3.008 3.011 3.003 7.882-.008 10.889zm-5.23-48.781c-16.373.0-29.701-13.324-29.701-29.698.0-16.381 13.328-29.714 29.701-29.714 16.378.0 29.706 13.333 29.706 29.714.0 16.374-13.328 29.698-29.706 29.698zM160.91 295.348c0-16.381 13.328-29.71 29.714-29.71 16.369.0 29.689 13.329 29.689 29.71.0 16.373-13.32 29.693-29.689 29.693-16.386.0-29.714-13.32-29.714-29.693z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy on facebook" href="https://facebook.com/sharer/sharer.php?u=https%3a%2f%2ffayez-als.github.io%2fpost%2f2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H342.978V319.085h66.6l12.672-82.621h-79.272v-53.617c0-22.603 11.073-44.636 46.58-44.636H425.6v-70.34s-32.71-5.582-63.982-5.582c-65.288.0-107.96 39.569-107.96 111.204v62.971h-72.573v82.621h72.573V512h-191.104c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy on whatsapp" href="https://api.whatsapp.com/send?text=Coding%20Neural%20Networks%20for%20Logistic%20Regression%20Using%20Linear%20Algebra%20%26%20Numpy%20-%20https%3a%2f%2ffayez-als.github.io%2fpost%2f2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy%2f"><svg viewBox="0 0 512 512"><path d="M449.446.0C483.971.0 512 28.03 512 62.554v386.892C512 483.97 483.97 512 449.446 512H62.554c-34.524.0-62.554-28.03-62.554-62.554V62.554c0-34.524 28.029-62.554 62.554-62.554h386.892zm-58.673 127.703c-33.842-33.881-78.847-52.548-126.798-52.568-98.799.0-179.21 80.405-179.249 179.234-.013 31.593 8.241 62.428 23.927 89.612l-25.429 92.884 95.021-24.925c26.181 14.28 55.659 21.807 85.658 21.816h.074c98.789.0 179.206-80.413 179.247-179.243.018-47.895-18.61-92.93-52.451-126.81zM263.976 403.485h-.06c-26.734-.01-52.954-7.193-75.828-20.767l-5.441-3.229-56.386 14.792 15.05-54.977-3.542-5.637c-14.913-23.72-22.791-51.136-22.779-79.287.033-82.142 66.867-148.971 149.046-148.971 39.793.014 77.199 15.531 105.329 43.692 28.128 28.16 43.609 65.592 43.594 105.4-.034 82.149-66.866 148.983-148.983 148.984zm81.721-111.581c-4.479-2.242-26.499-13.075-30.604-14.571-4.105-1.495-7.091-2.241-10.077 2.241-2.986 4.483-11.569 14.572-14.182 17.562-2.612 2.988-5.225 3.364-9.703 1.12-4.479-2.241-18.91-6.97-36.017-22.23C231.8 264.15 222.81 249.484 220.198 245s-.279-6.908 1.963-9.14c2.016-2.007 4.48-5.232 6.719-7.847 2.24-2.615 2.986-4.484 4.479-7.472 1.493-2.99.747-5.604-.374-7.846-1.119-2.241-10.077-24.288-13.809-33.256-3.635-8.733-7.327-7.55-10.077-7.688-2.609-.13-5.598-.158-8.583-.158-2.986.0-7.839 1.121-11.944 5.604-4.105 4.484-15.675 15.32-15.675 37.364.0 22.046 16.048 43.342 18.287 46.332 2.24 2.99 31.582 48.227 76.511 67.627 10.685 4.615 19.028 7.371 25.533 9.434 10.728 3.41 20.492 2.929 28.209 1.775 8.605-1.285 26.499-10.833 30.231-21.295 3.732-10.464 3.732-19.431 2.612-21.298-1.119-1.869-4.105-2.99-8.583-5.232z"/></svg></a><a target=_blank rel="noopener noreferrer" aria-label="share Coding Neural Networks for Logistic Regression Using Linear Algebra & Numpy on telegram" href="https://telegram.me/share/url?text=Coding%20Neural%20Networks%20for%20Logistic%20Regression%20Using%20Linear%20Algebra%20%26%20Numpy&url=https%3a%2f%2ffayez-als.github.io%2fpost%2f2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy%2f"><svg viewBox="2 2 28 28"><path d="M26.49 29.86H5.5a3.37 3.37.0 01-2.47-1 3.35 3.35.0 01-1-2.47V5.48A3.36 3.36.0 013 3 3.37 3.37.0 015.5 2h21A3.38 3.38.0 0129 3a3.36 3.36.0 011 2.46V26.37a3.35 3.35.0 01-1 2.47 3.38 3.38.0 01-2.51 1.02zm-5.38-6.71a.79.79.0 00.85-.66L24.73 9.24a.55.55.0 00-.18-.46.62.62.0 00-.41-.17q-.08.0-16.53 6.11a.59.59.0 00-.41.59.57.57.0 00.43.52l4 1.24 1.61 4.83a.62.62.0 00.63.43.56.56.0 00.4-.17L16.54 20l4.09 3A.9.9.0 0021.11 23.15zM13.8 20.71l-1.21-4q8.72-5.55 8.78-5.55c.15.0.23.0.23.16a.18.18.0 010 .06s-2.51 2.3-7.52 6.8z"/></svg></a></div></footer></article></main><footer class=footer><span>&copy; 2021 <a href=https://fayez-als.github.io/>Fayez Alshehri</a></span>
+<span>Powered by
+<a href=https://gohugo.io/ rel="noopener noreferrer" target=_blank>Hugo</a> &
+        <a href=https://git.io/hugopapermod rel=noopener target=_blank>PaperMod</a></span></footer><a href=#top aria-label="go to top" title="Go to Top (Alt + G)"><button class=top-link id=top-link type=button accesskey=g><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentcolor"><path d="M12 6H0l6-6z"/></svg></button></a>
+<script>let menu=document.getElementById('menu');menu.scrollLeft=localStorage.getItem("menu-scroll-position"),menu.onscroll=function(){localStorage.setItem("menu-scroll-position",menu.scrollLeft)},document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener("click",function(b){b.preventDefault();var a=this.getAttribute("href").substr(1);window.matchMedia('(prefers-reduced-motion: reduce)').matches?document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView():document.querySelector(`[id='${decodeURIComponent(a)}']`).scrollIntoView({behavior:"smooth"}),a==="top"?history.replaceState(null,null," "):history.pushState(null,null,`#${a}`)})})</script><script>var mybutton=document.getElementById("top-link");window.onscroll=function(){document.body.scrollTop>800||document.documentElement.scrollTop>800?(mybutton.style.visibility="visible",mybutton.style.opacity="1"):(mybutton.style.visibility="hidden",mybutton.style.opacity="0")}</script></body></html>

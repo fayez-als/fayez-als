@@ -9,7 +9,16 @@
       <link>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 02 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>neural-networks</title>
+      <link>https://fayez-als.github.io/tags/neural-networks/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fayez-als.github.io/tags/neural-networks/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>data-cleaning</title>
       <link>https://fayez-als.github.io/tags/data-cleaning/</link>

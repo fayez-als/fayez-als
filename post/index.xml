@@ -9,7 +9,17 @@
       <link>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Wed, 02 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Coding Neural Networks for Logistic Regression Using Linear Algebra &amp; Numpy</title>
+      <link>https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/</link>
+      <pubDate>Sun, 11 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/</guid>
+      <description>IntroductionNeural network’s most basic unit is a neuron. The way neurons interact and work together is the main determinant of the limits of a neural network’s complexity and sophistication.Similar to neurons found in the human brain, once a neuron receives a signal it is capable of combining it through linear regression, transforming it, and producing a new signal that is then received by another neuron.
+Neural networks are often seen in layers, with neurons in different levels interacting through the weighted attachments.</description>
+    </item>
+    
     <item>
       <title>Blossom Marathon Analysis using R language</title>
       <link>https://fayez-als.github.io/post/2021-06-02-blossom-marathon-analysis-using-r-language/</link>
