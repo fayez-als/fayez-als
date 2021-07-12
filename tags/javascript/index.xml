@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Javascript on Fayez Alshehri</title>
+    <link>https://fayez-als.github.io/tags/javascript/</link>
+    <description>Recent content in Javascript on Fayez Alshehri</description>
+    <image>
+      <url>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 12 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Using React.js to make a Music Player</title>
+      <link>https://fayez-als.github.io/post/2021-05-12-using-react-js-to-make-a-music-player/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fayez-als.github.io/post/2021-05-12-using-react-js-to-make-a-music-player/</guid>
+      <description>introductionThis is a simple project that was completed in approximately 3 hours Source Code. The whole project was programmed using React Hooks/Material-U. I relied very heavily on my pre-existing programming knowledge since other online tutorials have made the simple tasks unnecessarily more difficult. Once I had a grasp of how to manipulate audio documents using React the whole project was practically done and the only decisions and work left to be done was related to the overall aesthetics and looks.</description>
+    </item>
+    
+  </channel>
+</rss>

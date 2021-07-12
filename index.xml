@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Fayez Alshehri</title>
+    <link>https://fayez-als.github.io/</link>
+    <description>Recent content on Fayez Alshehri</description>
+    <image>
+      <url>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 02 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blossom Marathon Analysis using R language</title>
+      <link>https://fayez-als.github.io/post/2021-06-02-blossom-marathon-analysis-using-r-language/</link>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fayez-als.github.io/post/2021-06-02-blossom-marathon-analysis-using-r-language/</guid>
+      <description>IntroductionWith the massive explosion of data generated and published in the past few decades comes new challenges. Data analysts and scientists now have to discover patterns in this unprecedented amount of raw and often redundant data. In order to do that, data must go through a very critical and sensitive process of cleaning to produce high quality data that can later be used to estimate and draw generalizable conclusions.</description>
+    </item>
+    
+    <item>
+      <title>Using React.js to make a Music Player</title>
+      <link>https://fayez-als.github.io/post/2021-05-12-using-react-js-to-make-a-music-player/</link>
+      <pubDate>Wed, 12 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fayez-als.github.io/post/2021-05-12-using-react-js-to-make-a-music-player/</guid>
+      <description>introductionThis is a simple project that was completed in approximately 3 hours Source Code. The whole project was programmed using React Hooks/Material-U. I relied very heavily on my pre-existing programming knowledge since other online tutorials have made the simple tasks unnecessarily more difficult. Once I had a grasp of how to manipulate audio documents using React the whole project was practically done and the only decisions and work left to be done was related to the overall aesthetics and looks.</description>
+    </item>
+    
+    <item>
+      <title>Hello R Markdown</title>
+      <link>https://fayez-als.github.io/post/2020-12-01-r-rmarkdown/</link>
+      <pubDate>Tue, 01 Dec 2020 21:13:14 -0500</pubDate>
+      
+      <guid>https://fayez-als.github.io/post/2020-12-01-r-rmarkdown/</guid>
+      <description>R MarkdownThis is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.
+You can embed an R code chunk like this:
+summary(cars)## speed dist ## Min. : 4.0 Min. : 2.00 ## 1st Qu.:12.0 1st Qu.: 26.00 ## Median :15.0 Median : 36.00 ## Mean :15.4 Mean : 42.</description>
+    </item>
+    
+  </channel>
+</rss>

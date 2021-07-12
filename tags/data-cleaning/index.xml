@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>data-cleaning on Fayez Alshehri</title>
+    <link>https://fayez-als.github.io/tags/data-cleaning/</link>
+    <description>Recent content in data-cleaning on Fayez Alshehri</description>
+    <image>
+      <url>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 02 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/tags/data-cleaning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Blossom Marathon Analysis using R language</title>
+      <link>https://fayez-als.github.io/post/2021-06-02-blossom-marathon-analysis-using-r-language/</link>
+      <pubDate>Wed, 02 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fayez-als.github.io/post/2021-06-02-blossom-marathon-analysis-using-r-language/</guid>
+      <description>IntroductionWith the massive explosion of data generated and published in the past few decades comes new challenges. Data analysts and scientists now have to discover patterns in this unprecedented amount of raw and often redundant data. In order to do that, data must go through a very critical and sensitive process of cleaning to produce high quality data that can later be used to estimate and draw generalizable conclusions.</description>
+    </item>
+    
+  </channel>
+</rss>

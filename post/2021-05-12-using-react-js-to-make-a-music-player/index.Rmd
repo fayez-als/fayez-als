@@ -1,0 +1,64 @@
+---
+title: Using React.js to make a Music Player
+author: root
+date: '2021-05-12'
+slug: []
+categories: []
+tags:
+  - Javascript
+---
+
+
+
+
+
+
+## introduction 
+
+
+
+
+
+This is a simple project that was completed in approximately 3 hours [Source Code](https://github.com/fayez-als/musicPlayer). The whole project was programmed using  React Hooks/Material-U. I relied very heavily on my pre-existing programming knowledge since other online tutorials have made the simple tasks unnecessarily more difficult. Once I had a grasp of how to manipulate audio documents using React the whole project was practically done and the only decisions and work left to be done was related to the overall aesthetics and looks. 
+
+
+
+
+
+
+
+```{r,fig.align="center",echo=FALSE}
+htmltools::includeHTML("test.html")
+```
+
+
+
+
+## Challenges
+
+One of the challenges I faced was getting Material-UI Progress Bar to be interactive and responsive to clicking and dragging. This was solved by combining a range input with the progress bar. The results turned out to be beautiful and exactly how I wanted them to function. 
+
+
+
+Another challenge was a problem with playing the next song when the first one is done. Firing Next() will cause an infinite loop and skip to the last song. This issue was resolved by using a simple algorithm
+
+
+```{r eval=FALSE}
+useEffect(()=>
+    {if(currentTime>40){
+        setSkipping(true)}
+
+if(skipping){
+        if(currentTime>=duration-1){
+            Next()
+            setSkipping(false)
+        }
+    }})
+```
+---
+
+This was a very fun and interesting simple project I made in my spare time, although It doesn’t exercise React.JS abilities to its full potential.
+
+
+
+
