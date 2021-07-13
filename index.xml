@@ -9,18 +9,7 @@
       <link>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Tue, 13 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Cheat Sheet for Installing Nginx in Ubuntu and Configuring HTTPS</title>
-      <link>https://fayez-als.github.io/post/2021-07-13-cheat-sheet-for-installing-nginx-and-configuring-https/</link>
-      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
-      
-      <guid>https://fayez-als.github.io/post/2021-07-13-cheat-sheet-for-installing-nginx-and-configuring-https/</guid>
-      <description>Introduction I use Nginx in my workflow to serve Flask APIs, for network administrators Nginx installation is a simple task, but for programmers and APIs developers it can be complicated. In this article, I summarized the commands needed to install and set up Nginx over HTTPS.
-Nginx Installation To install Nginx run these codes successively.
-$ sudo apt-get update$ wget http://nginx.org/download/nginx-1.21.1.tar.gz$ tar -zxvf nginx-1.21.1.tar.gz$ cd nginx-1.21.1$ sudo apt-get install build-essential$ sudo apt-get install libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev$ .</description>
-    </item>
-    
+    <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Coding Neural Networks for Logistic Regression Using Linear Algebra &amp; Numpy</title>
       <link>https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/</link>
