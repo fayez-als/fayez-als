@@ -1,5 +1,5 @@
 ---
-title: Blossom Marathon Analysis using R language
+title: Advanced Data Cleaning and Processing Algorithms Using R Language
 author: root
 date: '2021-06-02'
 slug: []
@@ -23,17 +23,16 @@ In this report datasets provided by Credit Union Cherry Blossom Ten Mile Run wer
 
 ## Loading the data
 
-13 text files for each gender containing data from 1999 to 2012 was rearranged in one excel sheet with 150000 observations. This process would be very tedious and time consuming if done manually considering how both the format and the manner the information was reported is different from year to year. These changes can be seen as differences in the format of the table header and the use of footnotes. The tables had many errors including values that begin in the wrong column, missing headers, as well as other mistakes
+13 text files for each gender containing data from 1999 to 2012 was rearranged in one text files with 150000 observations. This process would be very tedious and time consuming if done manually considering how both the format and the manner the information was reported is different from year to year. These changes can be seen as differences in the format of the table header and the use of footnotes. The tables had many errors including values that begin in the wrong column, missing headers, as well as other mistakes
 
 
 
-Fig 1 here
 ![After Fix](fitfig1.png)
 
 
 
 
-a customized programming approach was used to transform the text files to tables using R language, the following codes shows the two main functions for finding the columns locations and seperating the rows to each columns
+A customized programming approach was used to transform the text files to tables, the following codes shows the two main functions for finding the columns locations and seperating the rows to each columns
 
 ```{r} 
 
@@ -73,13 +72,8 @@ MakeColumns <- function(rowData,year){
 ---
 
 ## Inspecting/Cleaning The Data
-jjkjkjk
+After loading the data we need to do initial inspecting to find any out-of-the-ordinary patterns. by the first inspection, we see the age values for 2003 and 2006 look off, a box plot can be a great tool to detect errors like this, going back to the original text files, and manipulate align the columns better we were able to fix it.
 
-
-
-we have successfully loaded all the data into one table
-
-we have selected the following columns 
 
 
 ```{css,echo=FALSE}
@@ -90,8 +84,7 @@ table{
 
 
 ```
-  by first inspection  we see the age values for 2003 and 2006 does look off, a box plot can be a great tool to detect errors like this, going back to the original text files, 
-  and fixing our initial loading programs, we fixed it
+
   
   
   
@@ -109,13 +102,11 @@ knitr::kable(head(Df), caption = "An example table caption.")
 
 ![After Fix](fig-afterfix.png)
 
+## Formating Columns
 
+The next step is to formate the columns correctly. In order to be able to manipulate the time, a new formate should be made. from h:m:s to number of minutes
 
-
-In order to be able to manipulate the time, a new formate should be made
-from h:m:s to number of minutes
-
-This can easily be made with a function like this
+This can easily be made with a bit of math.
 
 ```{r}
 toMinutes <- function(x){
@@ -131,11 +122,9 @@ toMinutes <- function(x){
 
 
 
-A summary of the amount of minutes across both genders and all years, no outliers and 505 missing data out of 15000
+## Further Inspection
 
-
-
-
+We once again used boxplot to summarize the number of minutes across both genders across the years, no outliers are found, although 505 missing data exist out of 15000. scatter plot is a great tool to quickly visualize the data and find any obvious trends which can tell us if we have cleaned data.
 
 
 ```{r, echo=FALSE}
@@ -144,55 +133,33 @@ A summary of the amount of minutes across both genders and all years, no outlier
 summary(Df2$minutes)
 ```
 
-next we are ready to explore the data more 
-
-
----
-
-
-
-## Exploring the data
 
 plotting scatter plot
 ![scatterPlot](agevsRunTime.png)
 
 
-A better way is to divide the ages to age group and plot summary data(ex box plot)
 
-![ageGroups](ageGroupsBox.png)
 
-. This sequence
-of boxplots shows the quartiles of time for men grouped into 10-year age intervals. As age
+
+## Initial Analysis 
+
+This sequence of boxplots shows the quartiles of time for men grouped into 10-year age intervals. As age
 increases, all the quartiles increase. However, the box becomes asymmetrical with age, which
-indicates that the upper quartile increases faster than the median and lower quartile
+indicates that the upper quartile increases faster than the median and lower quartile.
 
 
 
 
 
-
-
-Differences between Males And Females
-
-
-![womenvsmen](womenVsMen.png)
+![](womenVsMen.png)
 
 
 
-```{r,echo=FALSE, message=FALSE}
-library(tidyverse)
-library(kableExtra)
-
-diff <- read.csv('difference.csv')
-colnames(diff)<-c('15-25', '25-35', '35-45','45-55','55-65','65-75','75-90')
-knitr::kable(head(diff), caption = "difference between males and females") %>% kable_styling(position = "center")
 
 
+## Conclusion 
 
-```
-
-
-
+In this project, we demonstrated how to load data from multiple unsynchronized text files into one data frame. In a corporate scenario where such a task is needed, a multidisciplinary team usually handles the cleaning and organizing of the text files and loads them into a database to be furthered analyzed inside a GUI application. Programming language can speed up the cleaning process while simultaneously allow us to discover and analyze the data.
 
 
 

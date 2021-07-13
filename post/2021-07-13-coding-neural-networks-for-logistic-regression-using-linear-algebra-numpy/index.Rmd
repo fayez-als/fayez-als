@@ -185,7 +185,7 @@ def compute_cost(AL, Y):
 
 ```
 
-## backward propagation
+## Backward propagation
 
 For backward propagation to be implemented, a function that takes into account X, Y, the predicted values of each example, and  parameters (the weight and bias for each layer type) must be used. 
 The function serves the purpose of calculating the derivatives of each variable. Relying heavily on calculus and using the helper function defined earlier. The result of this function is a dictionary that contains each derivative that will be used in updating the parameters.
@@ -279,7 +279,7 @@ def update_with_Adam(params,grads,types,lr,V,S,beta1,beta2,t):
 
 
 
-## training with batches
+## Training with batches
 To efficiently manage the increasing amounts of data it is necessary to split the data into smaller portions in order to train machine-learning models. There are many methods for dividing the training examples into batches. 
 One example of these methods is stochastic. Stochastic trains one example at a time, training all the data at once, or using mini batches. The following function can be used to adjust the batch size for the required outcome. The drop layer position can also be specified here.
 
@@ -325,7 +325,7 @@ def batch_train_Adam(X,Y,P,types,iter,lr,drop_layer,batch_size,V,S,beta1,beta2):
 
 
 
-## proof of concept
+## Proof of Concept
 
 This Neural Network Algorithm will be tested using a sklearn dataset that contains 300 examples and two labels. 
 
