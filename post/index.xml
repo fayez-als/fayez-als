@@ -9,7 +9,18 @@
       <link>https://fayez-als.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sun, 11 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 13 Jul 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://fayez-als.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cheat Sheet for Installing Nginx in Ubuntu and Configuring HTTPS</title>
+      <link>https://fayez-als.github.io/post/2021-07-13-cheat-sheet-for-installing-nginx-and-configuring-https/</link>
+      <pubDate>Tue, 13 Jul 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://fayez-als.github.io/post/2021-07-13-cheat-sheet-for-installing-nginx-and-configuring-https/</guid>
+      <description>Nginx Installation To install Nginx run these codes successively.
+$ sudo apt-get update$ wget http://nginx.org/download/nginx-1.21.1.tar.gz$ tar -zxvf nginx-1.21.1.tar.gz$ cd nginx-1.21.1$ sudo apt-get install build-essential$ sudo apt-get install libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev$ ./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-pcre --pid-path=/var/run/nginx.pid --with-http_ssl_module --with-http_v2_module$ sudo make$ sudo make install$ sudo touch /lib/systemd/system/nginx.servicePaste th following code inside nginx.service
+[Unit]Description=The NGINX HTTP and reverse proxy serverAfter=syslog.</description>
+    </item>
+    
     <item>
       <title>Coding Neural Networks for Logistic Regression Using Linear Algebra &amp; Numpy</title>
       <link>https://fayez-als.github.io/post/2021-07-13-coding-neural-networks-for-logistic-regression-using-linear-algebra-numpy/</link>
