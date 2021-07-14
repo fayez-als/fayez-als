@@ -1,0 +1,157 @@
+---
+title: Cheat Sheet for Installing and Configuring Nginx over HTTPS
+author: root
+date: '2021-07-14'
+slug: []
+categories: []
+tags: []
+---
+
+
+## Introduction
+I use Nginx in my workflow to serve Flask APIs, for network administrators Nginx installation is a simple task. However, for programmers and APIs developers it can be complicated. In this article, I summarized the commands needed to install and set up Nginx over HTTPS.
+
+
+
+## Nginx Installation
+
+
+
+To install Nginx run these codes successively.
+
+
+```
+$ sudo apt-get update
+
+$ wget http://nginx.org/download/nginx-1.21.1.tar.gz
+
+$ tar -zxvf nginx-1.21.1.tar.gz
+
+$ cd nginx-1.21.1
+
+$ sudo apt-get install build-essential
+
+$ sudo apt-get install libpcre3 libpcre3-dev zlib1g zlib1g-dev libssl-dev
+
+$ ./configure --sbin-path=/usr/bin/nginx --conf-path=/etc/nginx/nginx.conf --error-log-path=/var/log/nginx/error.log --http-log-path=/var/log/nginx/access.log --with-pcre --pid-path=/var/run/nginx.pid --with-http_ssl_module --with-http_v2_module
+
+$ sudo make
+
+$ sudo make install
+
+$ sudo touch /lib/systemd/system/nginx.service
+
+```
+
+Paste the following code inside nginx.service
+
+```
+
+[Unit]
+Description=The NGINX HTTP and reverse proxy server
+After=syslog.target network-online.target remote-fs.target nss-lookup.target
+Wants=network-online.target
+
+[Service]
+Type=forking
+PIDFile=/var/run/nginx.pid
+ExecStartPre=/usr/bin/nginx -t
+ExecStart=/usr/bin/nginx
+ExecReload=/usr/bin/nginx -s reload
+ExecStop=/bin/kill -s QUIT $MAINPID
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
+
+
+```
+
+
+## Starting Nginx
+
+```
+$ sudo systemctl start nginx
+$ systemctl status nginx
+```
+
+Check if it is working
+
+```
+$ sudo nginx -t
+
+```
+
+The config file is in this location
+
+```
+/etc/nginx/nginx.conf
+
+```
+
+Example config file
+```
+events{}
+
+http {
+  
+  server {
+    
+    listen 80;
+    server_name www.example.com
+    location /{
+    return 200 "Welcome!"
+    }
+  }
+}
+
+```
+
+## Setting up HTTPS
+
+(To set up HTTPS a domain name is needed and be set like the example above)
+
+We will be using certbot to obtain SSL certificate
+
+```
+$ sudo apt-get update
+$ sudo apt-get install software-properties-common
+$ sudo add-apt-repository ppa:certbot/certbot
+$ sudo apt-get uptade
+$ sudo apt-get install python-certbot-nginx
+
+```
+
+Check if it is installed correctly 
+
+```
+$ certbot --help
+
+```
+
+to install the certificate run the following command and follow the instructions
+
+```
+$ sudo certbot --nginx
+
+```
+
+If everything ran correctly you will be greeted with 
+```
+Congrationations! you have successfuly enabled HTTPS
+
+```
+
+That's it, happy coding!
+
+
+
+
+
+
+
+
+
+
+
+
